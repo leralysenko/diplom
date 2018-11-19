@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card class="input-container">
+        <mat-form-field>
+            <input matInput placeholder="Ім'я та прізвище" [(ngModel)]="newStudent.name">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Класс" [(ngModel)]="newStudent.class">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" [(ngModel)]="newStudent.email">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Password" [(ngModel)]="newStudent.password">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="addStudent()" [hidden]="isEditStudent">OK</button>
+          <button mat-raised-button color="primary" (click)="updateStudent()" *ngIf="isEditStudent">Update</button>
+          <button mat-raised-button color="primary" (click)="clearForm()">Clear Form</button>
+  </mat-card>
+  
+  <mat-card class="list">
+      <mat-list role="list">
+          <mat-list-item role="listitem">
+          <div class="row">
+              <div class="item">Ім'я та прізвище</div>
+              <div class="item">Клас</div>
+              <div class="item">Email</div>
+              <div class="item">Password</div>
+            </div>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        <mat-list-item role="listitem" *ngFor="let student of students; let i = index">
+          <div class="row">
+            <div class="item">{{student.name}}</div>
+            <div class="item">{{student.class}}</div>
+            <div class="item">{{student.email}}</div>
+            <div class="item">{{student.password}}</div>
+            <div class="item">
+                <button mat-mini-fab color="primary" (click)="editStudent(i)">
+                  <i class="material-icons">
+                    edit
+                  </i>
+                </button>
+                <button mat-mini-fab color="warn" (click)="deleteStudent(i)">
+                    <i class="material-icons">
+                      delete
+                    </i>
+                </button>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+  </mat-card>
+</mat-card>
+

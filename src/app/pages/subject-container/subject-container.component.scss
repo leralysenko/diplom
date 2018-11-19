@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    .subject {
+        width: 50%;
+        height: 100%;
+        margin: 5px;
+        .input-container {
+            margin: 10px;
+        
+            mat-form-field {
+                display: block;
+                width: 50%;
+            }
+        
+            button {
+                margin: 5px;
+            }
+        }
+    }
+    
+    .comletedTask {
+        width: 50%;
+        height: 100%;
+        margin: 5px;
+    }
+}
+

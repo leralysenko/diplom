@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card class="input-container">
+        <mat-form-field>
+            <input matInput placeholder="Назва предмету" [(ngModel)]="newSubject.name">
+          </mat-form-field>
+          <mat-form-field>
+              <mat-select placeholder="Iм'я та прізвище вчителя" [(ngModel)]="newSubject.teacher">
+                <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+                  {{teacher.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Клас" [(ngModel)]="newSubject.class">
+                  <mat-option *ngFor="let class of classes" [value]="class">
+                    {{class.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          <button mat-raised-button color="primary" (click)="addSubject()" [hidden]="isEditSubject">OK</button>
+          <button mat-raised-button color="primary" (click)="updateSubject()" *ngIf="isEditSubject">Update</button>
+          <button mat-raised-button color="primary" (click)="clearForm()">Clear Form</button>
+  </mat-card>
+  
+  <mat-card class="list">
+      <mat-list role="list">
+          <mat-list-item role="listitem">
+          <div class="row">
+              <div class="item">Назва предмету</div>
+              <div class="item">Iм'я та прізвище вчителя</div>
+              <div class="item">Клас</div>
+            </div>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        <mat-list-item role="listitem" *ngFor="let subject of subjects; let i = index">
+          <div class="row">
+            <div class="item">{{subject.name}}</div>
+            <div class="item">{{subject.teacher.name}}</div>
+            <div class="item">{{subject.class.name}}</div>
+            <div class="item">
+                <button mat-mini-fab color="primary" (click)="editSubject(i)">
+                  <i class="material-icons">
+                    edit
+                  </i>
+                </button>
+                <button mat-mini-fab color="warn" (click)="deleteSubject(i)">
+                    <i class="material-icons">
+                      delete
+                    </i>
+                </button>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+  </mat-card>
+</mat-card>

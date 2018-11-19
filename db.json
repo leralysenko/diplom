@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "name": "Stasik Lihonin",
+      "class": "1-A",
+      "role": "student",
+      "email": "stask@st",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "name": "Валентина Лисенко",
+      "class": "",
+      "role": "teacher",
+      "email": "2323@23",
+      "password": "23",
+      "id": 3
+    }
+  ],
+  "classes": [
+    {
+      "name": "1-A",
+      "id": 1
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Математика 1 клас",
+      "teacher": {
+        "name": "Валентина Лисенко",
+        "class": "",
+        "role": "teacher",
+        "email": "2323@23",
+        "password": "23",
+        "id": 3
+      },
+      "class": {
+        "name": "1-A",
+        "id": 1
+      },
+      "tasks": [
+        {
+          "name": "1 завдання",
+          "description": "1",
+          "file": "C:\\fakepath\\Новый текстовый документ.txt",
+          "doneTask": []
+        },
+        {
+          "name": "2 завдання",
+          "description": "2",
+          "file": "C:\\fakepath\\Новый текстовый документ.txt",
+          "doneTask": []
+        },
+        {
+          "name": "3 завдання",
+          "description": "3",
+          "file": "C:\\fakepath\\Новый текстовый документ.txt",
+          "doneTask": []
+        },
+        {
+          "name": "4 задание",
+          "description": "4",
+          "file": "Новый текстовый документ.txt",
+          "doneTask": []
+        },
+        {
+          "name": "5 завдання",
+          "description": "5",
+          "file": "Новый текстовый документ.txt",
+          "doneTask": [
+            {
+              "description": "privit",
+              "file": "Новый текстовый документ.txt",
+              "student": {
+                "name": "Stasik Lihonin",
+                "class": "1-A",
+                "role": "student",
+                "email": "stask@st",
+                "password": "123",
+                "id": 2
+              }
+            }
+          ]
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Інформатика 1 клас",
+      "teacher": {
+        "name": "Валентина Лисенко",
+        "class": "",
+        "role": "teacher",
+        "email": "2323@23",
+        "password": "23",
+        "id": 3
+      },
+      "class": {
+        "name": "1-A",
+        "id": 1
+      },
+      "id": 2
+    }
+  ]
+}

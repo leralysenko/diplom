@@ -1,0 +1,30 @@
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+      <mat-card class="wrapper">
+          <img mat-card-image src="../../assets/images/help-us.png">
+      </mat-card>
+      <mat-card class="wrapper" *ngIf="currentUser.role==='admin'">
+          <button mat-raised-button (click)="switchTeacherList()">Список вчителів</button>
+          <button mat-raised-button (click)="switchStudentList()">Список учнів</button>
+          <button mat-raised-button (click)="switchSubjectList()">Список предметів</button>
+          <button mat-raised-button (click)="switchClassList()">Список класів</button>
+      </mat-card>
+      <mat-card class="wrapper">
+        <button mat-raised-button *ngFor="let subject of subjects" (click)="setCurrentSubject(subject)">{{subject.name}}</button>
+      </mat-card>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <ng-container *ngIf="currentUser.role==='admin'">
+          <app-student-list *ngIf="studentList"></app-student-list>
+          <app-teacher-list *ngIf="teacherList"></app-teacher-list>
+          <app-subject-list *ngIf="subjectList"></app-subject-list>
+          <app-class *ngIf="classList"></app-class>
+      </ng-container>
+      <ng-container>
+        <app-subject-container [currentSubject]="currentSubject"></app-subject-container>
+      </ng-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+

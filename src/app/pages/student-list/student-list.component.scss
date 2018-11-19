@@ -1,0 +1,25 @@
+.input-container {
+    margin: 10px;
+
+    mat-form-field {
+        display: block;
+        width: 50%;
+    }
+}
+
+.list {
+    margin: 10px;
+}
+
+.row {
+    margin: 5px 0px 5px 0px;
+
+    .item {
+        display: inline-block;
+        width: 150px;
+
+        button {
+            margin: 10px;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card class="input-container">
+        <mat-form-field>
+            <input matInput placeholder="Клас" [(ngModel)]="newClass.name">
+        </mat-form-field>
+          <button mat-raised-button color="primary" (click)="addClass()" [hidden]="isEditClass">OK</button>
+          <button mat-raised-button color="primary" (click)="updateClass()" *ngIf="isEditClass">Update</button>
+          <button mat-raised-button color="primary" (click)="clearForm()">Clear Form</button>
+  </mat-card>
+  
+  <mat-card class="list">
+      <mat-list role="list">
+          <mat-list-item role="listitem">
+          <div class="row">
+              <div class="item">Клас</div>
+            </div>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        <mat-list-item role="listitem" *ngFor="let class of classes; let i = index">
+          <div class="row">
+            <div class="item">{{class.name}}</div>
+            <div class="item">
+                <button mat-mini-fab color="primary" (click)="editClass(i)">
+                  <i class="material-icons">
+                    edit
+                  </i>
+                </button>
+                <button mat-mini-fab color="warn" (click)="deleteClass(i)">
+                    <i class="material-icons">
+                      delete
+                    </i>
+                </button>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+  </mat-card>
+</mat-card>
