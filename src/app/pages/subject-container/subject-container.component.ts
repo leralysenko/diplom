@@ -56,6 +56,7 @@ export class SubjectContainerComponent implements OnInit {
       }
       if (k === 0) this.currentTasks.push(this._currentSubject.tasks[i]);
     }
+    console.log(this.currentTasks);
   }
 
   addTask() {

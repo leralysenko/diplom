@@ -1,87 +1,102 @@
-<mat-card class="container">
-    <mat-card class="subject" *ngIf="currentUser.role==='teacher'">
-        <mat-card class="input-container">
-          <mat-form-field>
-            <input matInput placeholder="Назва завдання" [(ngModel)]="newTask.name">
-          </mat-form-field>
-          <mat-form-field>
-            <textarea matInput placeholder="Опис" [(ngModel)]="newTask.description" matTextareaAutosize matAutosizeMinRows=1 matAutosizeMaxRows=5></textarea>
-          </mat-form-field>
-            <input type="file" placeholder="Завантаження файлу" [(ngModel)]="file">
-          <button mat-raised-button color="primary" (click)="addTask()">OK</button>
-          <button mat-raised-button color="primary" (click)="clearForm()">Clear Form</button>
-        </mat-card>
-        
-        <mat-accordion>
-          <mat-expansion-panel *ngFor="let task of _currentSubject.tasks; let i=index" (click)="openCompletedTask(task)">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{task.name}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-        
-            <mat-card>
-              {{task.description}}
-            </mat-card>
-        
-            <mat-card>
-              <a href="">{{task.file}}</a>
-            </mat-card>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </mat-card>
-      <mat-card class="comletedTask">
-        <h4>Completed Task</h4>
-        <mat-accordion>
-          <mat-expansion-panel *ngFor="let completedTask of completedTaskList; let i=index">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{completedTask.student.name}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-        
-            <mat-card>
-              {{completedTask.description}}
-            </mat-card>
-        
-            <mat-card>
-              <a href="">{{completedTask.file}}</a>
-            </mat-card>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </mat-card>
-</mat-card>
-<mat-card *ngIf="currentUser.role==='student'">
-    <mat-card class="subject">     
-        <mat-accordion>
-          <mat-expansion-panel *ngFor="let task of currentTasks; let i=index">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{task.name}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-        
-            <mat-card>
-              {{task.description}}
-            </mat-card>
-        
-            <mat-card>
-              <a href="">{{task.file}}</a>
-            </mat-card>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      Додати виконане завдання
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-form-field>
-                    <textarea matInput placeholder="Опис" [(ngModel)]="completedTask.description" matTextareaAutosize matAutosizeMinRows=1 matAutosizeMaxRows=5></textarea>
-                </mat-form-field>
-                <input type="file" (change)=uploadFile($event)>
-                <button mat-raised-button color="primary" (click)="addCompletedTask(i)">OK</button>
-              </mat-expansion-panel>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </mat-card>
-</mat-card>
+<mat-card class="container" *ngIf="currentUser.role==='teacher'">
+  <mat-card class="subject">
+    <mat-card class="input-container">
+      <mat-form-field>
+        <input matInput placeholder="Назва завдання" [(ngModel)]="newTask.name">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Опис" [(ngModel)]="newTask.description" matTextareaAutosize matAutosizeMinRows=1
+          matAutosizeMaxRows=5></textarea>
+      </mat-form-field>
+      <input type="file" placeholder="Завантаження файлу" [(ngModel)]="file"> <i class="material-icons">
+        attach_file
+      </i>
+      <button mat-raised-button color="primary" (click)="addTask()">OK</button>
+      <button mat-raised-button color="primary" (click)="clearForm()">Clear Form</button>
+    </mat-card>
 
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let task of _currentSubject.tasks; let i=index" (click)="openCompletedTask(task)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{task.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card>
+          {{task.description}}
+        </mat-card>
+
+        <mat-card>
+          <a href="">{{task.file}}</a>
+        </mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+  <mat-card class="comletedTask">
+    <h4>Completed Task</h4>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let completedTask of completedTaskList; let i=index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{completedTask.student.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card>
+          {{completedTask.description}}
+        </mat-card>
+
+        <mat-card>
+          <a href="">{{completedTask.file}}</a>
+        </mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</mat-card>
+<mat-card *ngIf="currentTasks.length !== 0">
+  <mat-card class="subject">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let task of currentTasks; let i=index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{task.name}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-card>
+          {{task.description}}
+        </mat-card>
+
+        <mat-card>
+          <a href="">{{task.file}}</a>
+        </mat-card>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Додати виконане завдання
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <textarea matInput placeholder="Опис" [(ngModel)]="completedTask.description" matTextareaAutosize
+              matAutosizeMinRows=1 matAutosizeMaxRows=5></textarea>
+          </mat-form-field>
+          <input type="file" (change)=uploadFile($event)>
+          <button mat-raised-button color="primary" (click)="addCompletedTask(i)">OK</button>
+        </mat-expansion-panel>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</mat-card>
+<mat-card class="wrapper">
+  <div class="arrow" *ngIf="currentTasks.length === 0 || !_currentSubject">
+  </div>
+  <div class="title" *ngIf="currentTasks.length === 0 || !_currentSubject">
+    Виберіть предмет
+  </div>
+  <!-- <div class="background">
+    <div class="image">
+    </div>
+  </div> -->
+
+</mat-card>

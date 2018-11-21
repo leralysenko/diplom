@@ -3,19 +3,23 @@
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card card-signin my-5">
         <div class="card-body">
-          <h5 class="card-title text-center">Sign In</h5>
+          <h5 class="card-title text-center">Вхід</h5>
           <form class="form-signin">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" required autofocus>
-              <label for="inputEmail">Email address</label>
+              <mat-form-field>
+                <input matInput type="email" id="inputEmail" placeholder="Емайл"
+                  [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
             </div>
 
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" required>
-              <label for="inputPassword">Password</label>
+              <mat-form-field>
+                <input matInput type="password" id="inputPassword" placeholder="Пароль"
+                  [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
             </div>
 
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click)="logIn()">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click)="logIn()">Увійти</button>
           </form>
         </div>
       </div>

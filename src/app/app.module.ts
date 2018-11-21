@@ -24,6 +24,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { ClassComponent } from './pages/class/class.component';
 import { SubjectContainerComponent } from './pages/subject-container/subject-container.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AuthSnackBarComponent } from './auth-snack-bar/auth-snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     TeacherListComponent,
     SubjectListComponent,
     ClassComponent,
-    SubjectContainerComponent
+    SubjectContainerComponent,
+    AuthSnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +56,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDividerModule,
     MatCardModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
+  entryComponents: [AuthSnackBarComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

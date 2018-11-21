@@ -14,11 +14,13 @@ export class AuthManagerService {
 
   private authUrl = 'http://localhost:3000';
 
-  currentUser: User;
+  currentUser: any;
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.getCurrentUser();
+   }
 
   getUsers(): Observable<any> {
     return this.http.get(`${this.authUrl}/users`, httpOptions);
@@ -34,5 +36,10 @@ export class AuthManagerService {
 
   updateUser(user: any): Observable<any> {
     return this.http.put(`${this.authUrl}/users/${user.id}`, user, httpOptions);
+  }
+
+  getCurrentUser() {
+    let localAuth = JSON.parse(localStorage.getItem('auth'));
+    if(localAuth) this.currentUser = localAuth;
   }
 }

@@ -13,6 +13,7 @@
       <mat-card class="wrapper">
         <button mat-raised-button *ngFor="let subject of subjects" (click)="setCurrentSubject(subject)">{{subject.name}}</button>
       </mat-card>
+      <button mat-raised-button class="logOut" (click)="logOut()">Logout</button>
     </mat-sidenav>
     <mat-sidenav-content>
       <ng-container *ngIf="currentUser.role==='admin'">

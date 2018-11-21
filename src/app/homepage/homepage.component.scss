@@ -9,6 +9,8 @@
     mat-sidenav {
         width: 250px;
         padding: 10px;
+        border-radius: 30px;
+        border-right: 3px solid rgb(133, 178, 40);
 
         .wrapper {
             margin: 10px 5px 10px 5px;
@@ -22,13 +24,25 @@
                 text-transform: capitalize;
                 font-size: 13px;
                 padding: 10px 15px;
-                // background-color: #f44336 !important;
                 box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(54, 244, 139, 0.4) !important;
+
+                &:hover {
+                    background-color: rgb(133, 178, 40);
+                    color: white;
+                }
+                &:focus {
+                    background-color: rgb(133, 178, 40) !important;
+                    color: white !important;
+                }
             }
         }
-       
-        
-
-
+    }
+    
+    .logOut {
+        position: absolute;
+        bottom: 10px;
+        width: 90%;
+        background-color: rgb(133, 178, 40);
+        color: white;
     }
   }

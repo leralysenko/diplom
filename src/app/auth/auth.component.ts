@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
 import { AuthManagerService } from 'src/app/services/auth-manager.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { MatSnackBar } from '@angular/material';
+import { AuthSnackBarComponent } from '../auth-snack-bar/auth-snack-bar.component';
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +21,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authManager: AuthManagerService
+    private authManager: AuthManagerService,
+    public snackBar: MatSnackBar
   ) { }
 
   logIn() {
@@ -28,9 +31,23 @@ export class AuthComponent implements OnInit {
       if (this.user.email === this.users[i].email 
           && this.user.password === this.users[i].password) {
           this.authManager.currentUser = this.users[i];
+          this.saveinLocalStorage(this.users[i]);
           this.router.navigateByUrl('/home');
+          return;
       }
     }
+    this.showAuthSnackBar();
+  }
+
+  showAuthSnackBar() {
+    this.snackBar.openFromComponent(AuthSnackBarComponent, {
+      duration: 1000,
+    });
+  }
+
+  saveinLocalStorage(obj) {
+    let serialObj = JSON.stringify(obj);
+    localStorage.setItem("auth", serialObj)
   }
 
   ngOnInit() {
@@ -38,6 +55,8 @@ export class AuthComponent implements OnInit {
       this.users = res;
       console.log(this.users);
     });
+
+    
   }
 
 }

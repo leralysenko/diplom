@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthManagerService } from 'src/app/services/auth-manager.service';
 import { ProjectManagerService } from 'src/app/services/project-manager.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private authManager: AuthManagerService,
-    private projectManager: ProjectManagerService
+    private projectManager: ProjectManagerService,
+    private router: Router
   ) { }
 
   switchStudentList() {
@@ -60,6 +62,12 @@ export class HomepageComponent implements OnInit {
 
   setCurrentSubject(subject) {
     this.currentSubject = subject;
+  }
+
+  logOut() {
+    this.authManager.currentUser = {};
+    localStorage.removeItem("auth");
+    this.router.navigateByUrl('/auth');
   }
 
   ngOnInit() {

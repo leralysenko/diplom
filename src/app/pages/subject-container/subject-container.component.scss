@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 .container {
     display: flex;
     .subject {
@@ -24,4 +25,58 @@
         margin: 5px;
     }
 }
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    &:before{
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: 1;
+        position:absolute;
+        left:0;
+        top:0;
+        content: " ";
+        background-image: url('../../../assets/images/mainImg.png');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+        opacity: 0.6;
+    }
+    .arrow {
+        background-image: url('../../../assets/images/arrow.png');
+        position: absolute;
+        top: 230px;
+        width: 200px;
+        height: 50px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .title {
+        position: absolute;
+        top: 226px;
+        left: 82px;
+        font-family: 'Pacifico', cursive;
+    }
+    .background {
+        width: 98%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 0px;
+        .image {
+            background-image: url('../../../assets/images/mainImg.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 100%;
+            width: 60%;
+            opacity: 0.6;
+        }
+    }
+}
+
 
