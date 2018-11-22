@@ -13,6 +13,7 @@ export class SubjectContainerComponent implements OnInit {
   @Input() 
   public set currentSubject(val: string) {
     this._currentSubject = val;
+    console.log(this._currentSubject);
     this.showTasks();
   };
 
