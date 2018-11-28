@@ -26,6 +26,7 @@ import { SubjectContainerComponent } from './pages/subject-container/subject-con
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthSnackBarComponent } from './auth-snack-bar/auth-snack-bar.component';
+import { RatedMagazineComponent } from './pages/rated-magazine/rated-magazine.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthSnackBarComponent } from './auth-snack-bar/auth-snack-bar.component
     SubjectListComponent,
     ClassComponent,
     SubjectContainerComponent,
-    AuthSnackBarComponent
+    AuthSnackBarComponent,
+    RatedMagazineComponent
   ],
   imports: [
     BrowserModule,
