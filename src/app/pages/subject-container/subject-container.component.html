@@ -8,6 +8,7 @@
   <mat-card class="container" *ngIf="currentUser.role==='teacher' && _currentSubject.name">
       <mat-card class="subject">
         <h3>Додати нове завдання</h3>
+        <button mat-raised-button color="warn" class="rated" (click)="openDialog()">Журнал</button>
         <mat-card class="input-container">
           <mat-form-field>
             <input matInput placeholder="Назва завдання" [(ngModel)]="newTask.name">
@@ -100,4 +101,3 @@
       </mat-accordion>
     </mat-card>
 </mat-card>
-<app-rated-magazine></app-rated-magazine>

@@ -27,6 +27,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthSnackBarComponent } from './auth-snack-bar/auth-snack-bar.component';
 import { RatedMagazineComponent } from './pages/rated-magazine/rated-magazine.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -59,9 +61,11 @@ import { RatedMagazineComponent } from './pages/rated-magazine/rated-magazine.co
     MatCardModule,
     MatSelectModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatTableModule
   ],
-  entryComponents: [AuthSnackBarComponent],
+  entryComponents: [AuthSnackBarComponent, RatedMagazineComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-rated-magazine',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class RatedMagazineComponent implements OnInit {
 
   tasks = ['task1', 'task2', 'task3', 'task4', 'task5', 'task6'];
-  student = [
+  students:any = [
     {
       name: 'Ivan Ivanov',
       tasks: [
@@ -53,9 +54,44 @@ export class RatedMagazineComponent implements OnInit {
         {name: 'task6', rated: ""},
       ]
     },
-  ]
+  ];
 
-  constructor() { }
+  selected;
+  newRecord: any = {
+    student: "",
+    rate: "",
+    task: ""
+  };
+
+  constructor(
+    public dialogRef: MatDialogRef<RatedMagazineComponent>
+  ) { }
+
+  addRate() {
+    for (let i = 0; i < this.students.length; i++) {
+      for (let j = 0; j < this.students[i].tasks.length; j++) {
+        if (this.newRecord.student.name == this.students[i].name && this.newRecord.task == this.students[i].tasks[j].name) {
+          this.students[i].tasks[j].rated = this.newRecord.rate;
+
+          this.newRecord = {
+            student: "",
+            rate: "",
+            task: ""
+          };
+          
+          return;
+        }
+      }
+    }
+  }
+
+  clearForm() {
+    this.newRecord = {
+      student: "",
+      rate: "",
+      task: ""
+    };
+  }
 
   ngOnInit() {
   }

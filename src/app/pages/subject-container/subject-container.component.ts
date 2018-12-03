@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProjectManagerService } from 'src/app/services/project-manager.service';
 import { AuthManagerService } from 'src/app/services/auth-manager.service';
+import { MatDialog } from '@angular/material';
+import { RatedMagazineComponent } from 'src/app/pages/rated-magazine/rated-magazine.component';
 
 @Component({
   selector: 'app-subject-container',
@@ -42,7 +44,8 @@ export class SubjectContainerComponent implements OnInit {
 
   constructor(
     private projectManager: ProjectManagerService,
-    private authManager: AuthManagerService
+    private authManager: AuthManagerService,
+    public dialog: MatDialog
   ) { 
     this.currentUser = this.authManager.currentUser;
   }
@@ -109,6 +112,16 @@ export class SubjectContainerComponent implements OnInit {
       file: "",
       doneTask: []
     };
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RatedMagazineComponent, {
+      width: '700px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   ngOnInit() {

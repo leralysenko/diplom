@@ -1,16 +1,17 @@
-<mat-card>
-  <!-- <mat-card class="input-container">
+<h1 mat-dialog-title>Журнал</h1>
+<mat-card mat-dialog-content>
+  <mat-card class="input-container">
     <mat-form-field>
-      <mat-select placeholder="Ім'я та прізвище">
+      <mat-select placeholder="Ім'я та прізвище"[(ngModel)]="newRecord.student">
         <mat-option *ngFor="let student of students" [value]="student">
           {{student.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Ім'я та прізвище">
+      <mat-select placeholder="Завдання" [(ngModel)]="newRecord.task">
         <mat-option *ngFor="let task of tasks" [value]="task">
-          {{task.name}}
+          {{task}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -19,24 +20,22 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="addRate()">OK</button>
     <button mat-raised-button color="primary" (click)="clearForm()">Clear Form</button>
-  </mat-card> -->
+  </mat-card>
 
   <mat-card class="list">
-    <mat-list role="list">
-      <mat-list-item role="listitem">
-        <div class="row">
-          <div class="item">Ім'я та прізвище</div>
-          <div class="item" *ngFor="let task of tasks">task.name</div>
-        </div>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-      <mat-list-item role="listitem" *ngFor="let student of students; let i = index">
-        <div class="row">
-          <div class="item">{{student.name}}</div>
-          <div class="item" *ngFor="let task of student.tasks">{{task.rate}}</div>
-        </div>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
+    <table>
+      <tr>
+        <th>Ім'я та прізвище</th>
+        <th *ngFor="let task of tasks">{{task}}</th>
+      </tr>
+      <tr *ngFor="let student of students; let i = index">
+        <td>
+          {{student.name}}
+        </td>
+        <td *ngFor="let task of student.tasks">
+          {{task.rated}}
+        </td>
+        </tr>
+    </table>
   </mat-card>
 </mat-card>
